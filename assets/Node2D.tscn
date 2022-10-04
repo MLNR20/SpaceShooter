@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://SpaceNodeGunShip.tscn" type="PackedScene" id=1]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Space" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0.039879, 0.653196 )
+scale = Vector2( 0.65, 0.7 )

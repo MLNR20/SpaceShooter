@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://SpaceShooter/SpaceShooter_Assets/player_sheet.png" type="Texture" id=1]
+[ext_resource path="res://Player/Player.gd" type="Script" id=2]
+[ext_resource path="res://SpaceShooter/SpaceShooter_Assets/shield.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 41.0188
+
+[node name="Player" type="Area2D"]
+scale = Vector2( 0.606574, 0.614915 )
+z_index = 100
+script = ExtResource( 2 )
+fireDelay = 0.25
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 5.11895, 0.363365 )
+texture = ExtResource( 1 )
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 3.85724, -1.356 )
+shape = SubResource( 1 )
+
+[node name="FiringPositions" type="Node2D" parent="."]
+position = Vector2( 2.29543, 5.88495 )
+
+[node name="LeftGun" type="Node2D" parent="FiringPositions"]
+position = Vector2( -41.4002, -16.8736 )
+
+[node name="RightGun" type="Node2D" parent="FiringPositions"]
+position = Vector2( 50.5764, -13.3243 )
+
+[node name="FireDelayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="InvincibilityTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="Shield" type="Sprite" parent="."]
+position = Vector2( 2.45067, -10.8784 )
+scale = Vector2( 0.9, 0.9 )
+texture = ExtResource( 3 )
+
+[connection signal="timeout" from="InvincibilityTimer" to="." method="_on_InvincibilityTimer_timeout"]
